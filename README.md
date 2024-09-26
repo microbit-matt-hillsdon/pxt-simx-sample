@@ -1,13 +1,15 @@
 
-> Open this page at [https://eanders-ms.github.io/simext-test/](https://eanders-ms.github.io/simext-test/)
-
 # Simulator Extension Sample
 
 ## What is a simulator extension?
 
+TBD
+
 ## Creating a simulator extension
 
-### Create a traditional MakeCode extension
+### First create a traditional MakeCode extension
+
+> Simulator extensions are contained within traditional MakeCode "code" extensions. If you're not adding a simulator extension to an existing code extension, then you must first create a new code extension.
 
 Create a new project in MakeCode.
 
@@ -63,15 +65,21 @@ Install dependencies
 npm i
 ```
 
-Optional: Test your simext locally
+### Test your simext locally
+
+Start the local development server:
 
 ```bash
 npm run dev
 ```
 
+Then load your site in a browser, e.g.: http://localhost:3000
+
+To get the most out of the following steps, first ensure your placeholder simext site is working properly on localhost.
+
 ### Fine-tune simulator extension project configuration
 
-Simulator extensions will not be served from site root in production. This may require build configuration changes.
+Simulator extensions will not be served from site root in production. This may require changes to the build configuration.
 
 If using Vite, add the `base` option to your `vite.config.js` file to specify relative pathing:
 
@@ -95,20 +103,77 @@ In the root of your repo, create the subfolder `.github/workflows` and copy this
 
 Edit anything that looks different from the sample configuration.
 
-
 ### Commit your changes
 
 Commit your changes and push everything to GitHub.
 
+```bash
+git add .
+git commit -m "add simulator extension"
+git push
+```
+
+### Run the `Build Simulator Extension` GitHub Action
+
+Back at github.com in your repo, click on the **Actions** tab, then **Build Simulator Extension**.
+
+On the right-hand side of the page click **Run workflow**, and run from `master`.
+
+Wait for the workflow to complete. This will create the `gh-pages` branch.
+
 ### Setup GitHub Pages in your repo
 
-Back at github.com, enable GitHub Pages for your repo.
+On your repo's main page, click on the **Settings** tab, then **Pages**.
 
+Under **Build and deployment** change the branch to `gh-pages` then click **Save**.
+
+Changing the Pages branch will kick off a publish workflow. Wait a minute for it to complete, then click **Visit site** at the top of the page. A new tab will open and you should see your placeholder simext site.
+
+
+## Testing your simulator extension in MakeCode
+
+### Host MakeCode locally
+
+To test your extension you must be hosting the MakeCode editor locally. Follow the steps [here]() to get setup for MakeCode localhost development.
+
+Once you're successfully serving the MakeCode editor locally, proceed to the next step.
+
+### Configure your extension in `targetconfig.json`
+
+> The following steps assume you have a MakeCode target workspace open in vscode. e.g. for microbit, this means you opened the file `microbit.vscode-workspace` located in your clone of the `pxt-microbit` repo.
+
+Locate the file `targetconfig.json`. It will be in the root of the target repo folder. e.g.: `pxt-microbit/targetconfig.json`
+
+Add your extension to the `approvedRepoLib` section of `targetconfig.json`. The entry key must be your `"<organization name>/<repo name>"`. _(Note there are special exceptions to this for repos containing multiple extensions.)_
+
+```json
+{
+    "packages": {
+        // ...
+        "approvedRepoLib": {
+            // ...
+            "eanders-ms/simext-test": {
+                "simext": {
+                    "sha": "5695afe18fa692a9327bb06104f2813b38d11542",
+                    "devUrl": "http://localhost:5173"
+                }
+            }
+        }
+    }
+}
+```
+
+
+
+
+To be continued...
 
 
 
 # README
 What follows is the default README for all MakeCode extensions.
+
+> Open this page at [https://eanders-ms.github.io/simext-test/](https://eanders-ms.github.io/simext-test/)
 
 ## Use as Extension
 
