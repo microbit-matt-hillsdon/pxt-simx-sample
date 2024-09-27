@@ -1,5 +1,5 @@
 // MakeCode Simulator Message Types
-// See https://github.com/microsoft/pxt/blob/c32ac7b23e82fb955dd6f02bfb32a9f0fde8e316/pxtsim/embed.ts#L90
+// See https://github.com/microsoft/pxt/blob/master/pxtsim/embed.ts
 
 export interface SimulatorMessage {
     type: string

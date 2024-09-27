@@ -144,7 +144,7 @@ Once you're successfully serving the MakeCode editor locally, proceed to the nex
 
 Locate the file `targetconfig.json`. It will be in the root of the target repo folder. e.g.: `pxt-microbit/targetconfig.json`
 
-Add your extension to the `approvedRepoLib` section of `targetconfig.json`. The entry key must be your `"<organization name>/<repo name>"`. _(Note there are special exceptions to this for repos containing multiple extensions.)_
+Add your extension to the `approvedRepoLib` section of `targetconfig.json`. The entry key must be your `"<organization name>/<repo name>"`. _(Note there is an alternate configuration for monorepos containing multiple extensions.)_
 
 ```json
 {
@@ -152,7 +152,7 @@ Add your extension to the `approvedRepoLib` section of `targetconfig.json`. The 
         // ...
         "approvedRepoLib": {
             // ...
-            "eanders-ms/simx-test": {
+            "eanders-ms/simx-sample": {
                 "simx": {
                     "sha": "5695afe18fa692a9327bb06104f2813b38d11542",
                     "devUrl": "http://localhost:5173"
@@ -173,7 +173,7 @@ To be continued...
 # README
 What follows is the default README common to all MakeCode extensions.
 
-> Open this page at [https://eanders-ms.github.io/simx-test/](https://eanders-ms.github.io/simx-test/)
+> Open this page at [https://eanders-ms.github.io/simx-sample/](https://eanders-ms.github.io/simx-sample/)
 
 ## Use as Extension
 
@@ -182,7 +182,7 @@ This repository can be added as an **extension** in MakeCode.
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
-* search for **https://github.com/eanders-ms/simx-test** and import
+* search for **https://github.com/eanders-ms/simx-sample** and import
 
 ## Edit this project
 
@@ -190,7 +190,7 @@ To edit this repository in MakeCode.
 
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **Import** then click on **Import URL**
-* paste **https://github.com/eanders-ms/simx-test** and click import
+* paste **https://github.com/eanders-ms/simx-sample** and click import
 
 #### Metadata (used for search, rendering)
 
