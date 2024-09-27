@@ -1,5 +1,5 @@
 {
-  "name": "simext",
+  "name": "@eanders-ms/simx-sample",
   "private": true,
   "version": "0.0.0",
   "type": "module",

@@ -4,6 +4,6 @@ namespace test {
         const msg = {
             type: "init",
         };
-        control.simmessages.send("eanders-ms/simext-test", Buffer.fromUTF8(JSON.stringify(msg)), false);
+        control.simmessages.send("eanders-ms/simx-sample", Buffer.fromUTF8(JSON.stringify(msg)), false);
     }
 }

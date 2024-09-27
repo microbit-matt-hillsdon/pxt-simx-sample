@@ -53,11 +53,11 @@ Change directory to your cloned repo.
 In this folder, create a subproject for your simulator extension. The example below initializes the subproject to use [Vite](https://vitejs.dev/), [React](https://react.dev/), and [TypeScript](https://www.typescriptlang.org/). **None of these frameworks are required.** Use the famework that best suits your need.
 
 ```bash
-npm create vite@latest simext -- react-ts
-cd simext
+npm create vite@latest simx -- react-ts
+cd simx
 ```
 
-> The remaining steps assume your main branch is named "master", you initialized your subproject in the `/simext` folder and it has certain npm scripts defined in package.json. Your actual setup may vary. That shouldn't be a problem. Just adapt the instructions to fit your configuration.
+> The remaining steps assume your main branch is named "master", you initialized your subproject in the `/simx` folder and it has certain npm scripts defined in package.json. Your actual setup may vary. That shouldn't be a problem. Just adapt the instructions to fit your configuration.
 
 Install dependencies
 
@@ -65,7 +65,7 @@ Install dependencies
 npm i
 ```
 
-### Test your simext locally
+### Test your simx locally
 
 Start the local development server:
 
@@ -75,7 +75,7 @@ npm run dev
 
 Then load your site in a browser, e.g.: http://localhost:3000
 
-To get the most out of the following steps, first ensure your placeholder simext site is working properly on localhost.
+To get the most out of the following steps, first ensure your placeholder simx site is working properly on localhost.
 
 ### Fine-tune simulator extension project configuration
 
@@ -99,7 +99,7 @@ export default defineConfig({
 
 Simulator extensions must be published to GitHub pages.
 
-In the root of your repo, create the subfolder `.github/workflows` and copy this repo's `.github/workflows/build-simext.yml` file to that folder.
+In the root of your repo, create the subfolder `.github/workflows` and copy this repo's `.github/workflows/build-simx.yml` file to that folder.
 
 Edit anything that looks different from the sample configuration.
 
@@ -127,7 +127,7 @@ On your repo's main page, click on the **Settings** tab, then **Pages**.
 
 Under **Build and deployment** change the branch to `gh-pages` then click **Save**.
 
-Changing the Pages branch will kick off a publish workflow. Wait a minute for it to complete, then click **Visit site** at the top of the page. A new tab will open and you should see your placeholder simext site.
+Changing the Pages branch will kick off a publish workflow. Wait a minute for it to complete, then click **Visit site** at the top of the page. A new tab will open and you should see your placeholder simx site.
 
 
 ## Testing your simulator extension in MakeCode
@@ -152,8 +152,8 @@ Add your extension to the `approvedRepoLib` section of `targetconfig.json`. The 
         // ...
         "approvedRepoLib": {
             // ...
-            "eanders-ms/simext-test": {
-                "simext": {
+            "eanders-ms/simx-test": {
+                "simx": {
                     "sha": "5695afe18fa692a9327bb06104f2813b38d11542",
                     "devUrl": "http://localhost:5173"
                 }
@@ -173,7 +173,7 @@ To be continued...
 # README
 What follows is the default README common to all MakeCode extensions.
 
-> Open this page at [https://eanders-ms.github.io/simext-test/](https://eanders-ms.github.io/simext-test/)
+> Open this page at [https://eanders-ms.github.io/simx-test/](https://eanders-ms.github.io/simx-test/)
 
 ## Use as Extension
 
@@ -182,7 +182,7 @@ This repository can be added as an **extension** in MakeCode.
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
-* search for **https://github.com/eanders-ms/simext-test** and import
+* search for **https://github.com/eanders-ms/simx-test** and import
 
 ## Edit this project
 
@@ -190,7 +190,7 @@ To edit this repository in MakeCode.
 
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **Import** then click on **Import URL**
-* paste **https://github.com/eanders-ms/simext-test** and click import
+* paste **https://github.com/eanders-ms/simx-test** and click import
 
 #### Metadata (used for search, rendering)
 
