@@ -171,7 +171,7 @@ To be continued...
 
 
 # README
-What follows is the default README for all MakeCode extensions.
+What follows is the default README common to all MakeCode extensions.
 
 > Open this page at [https://eanders-ms.github.io/simext-test/](https://eanders-ms.github.io/simext-test/)
 
