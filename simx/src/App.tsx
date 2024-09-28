@@ -26,6 +26,12 @@ function postSimMessage(msg: ExtensionMessage) {
     window.parent.postMessage(packet, "*")
 }
 
+const GREEN = "#3AFFB3";
+const BLUE = "#3ADCFF";
+const YELLOW = "#FFD43A";
+const RED = "#FF3A54";
+const COLORS = [GREEN, BLUE, YELLOW, RED];
+
 export function App() {
     // Refs to the elements we want to interact with programmatically
     const inputRef = useRef<HTMLInputElement>(null)
@@ -46,6 +52,11 @@ export function App() {
             case "init": {
                 if (logRef.current) {
                     logRef.current.value = ""
+                }
+                const root = document.getElementById("root")
+                if (root) {
+                    // assign a new color
+                    root.style.backgroundColor = COLORS[Math.floor(Math.random() * COLORS.length)];
                 }
                 break
             }
