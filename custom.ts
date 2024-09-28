@@ -8,10 +8,11 @@ namespace SimxSample {
         control.simmessages.send("eanders-ms/simx-sample", Buffer.fromUTF8(JSON.stringify(msg)), false);
     }
 
-    let stringMessageHandler: (s: string) => void;
+    let stringMessageHandler: (val: string) => void;
 
     //% block
-    export function onReceiveString(handler: (s: string) => void) {
+    //% draggableParameters="reporter"
+    export function onReceiveString(handler: (val: string) => void) {
         stringMessageHandler = handler;
     }
 
