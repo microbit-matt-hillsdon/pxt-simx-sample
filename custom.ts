@@ -18,7 +18,7 @@ namespace SimxSample {
     function handleSimxMessage(b: Buffer) {
         const s = b.toString();
         const msg = JSON.parse(s);
-        if (msg.type) return;
+        if (!msg.type) return;
         switch (msg.type) {
             case "string": {
                 if (stringMessageHandler) stringMessageHandler(msg.value);
