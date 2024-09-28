@@ -6,10 +6,11 @@ import "./App.css"
 const MY_CHANNEL = "eanders-ms/simx-sample"
 
 // Messages sent to/from this project's code extension. This interface is application-defined and can be anything.
-interface ExtensionMessage {
-    type: "msg"
-    content: string
+type StringExtensionMessage = {
+    type: "string"
+    value: string
 }
+type ExtensionMessage = StringExtensionMessage
 
 // Sends a message to this simx's code extension
 function postSimMessage(msg: ExtensionMessage) {
@@ -32,16 +33,16 @@ export function App() {
         if (inputRef.current) {
             const message = inputRef.current.value
             inputRef.current.value = ""
-            postSimMessage({ type: "msg", content: message })
+            postSimMessage({ type: "string", value: message })
         }
     }
 
     // Handle a message from this simulator's code extension
     const receiveExtensionMessage = (msg: ExtensionMessage) => {
         switch (msg.type) {
-            case "msg": {
+            case "string": {
                 if (logRef.current) {
-                    logRef.current.value += msg.content + "\n"
+                    logRef.current.value += msg.value + "\n"
                 }
                 break
             }
