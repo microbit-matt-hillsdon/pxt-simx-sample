@@ -26,16 +26,29 @@ function postSimMessage(msg: ExtensionMessage) {
     window.parent.postMessage(packet, "*")
 }
 
-const GREEN = "#3AFFB3";
-const BLUE = "#3ADCFF";
-const YELLOW = "#FFD43A";
-const RED = "#FF3A54";
-const COLORS = [GREEN, BLUE, YELLOW, RED];
+const GREEN = "#3AFFB3"
+const BLUE = "#3ADCFF"
+const YELLOW = "#FFD43A"
+const RED = "#FF3A54"
+const COLORS = [GREEN, BLUE, YELLOW, RED]
+
+function setRandomColor() {
+    // assign a background color to the root div
+    const root = document.getElementById("root")
+    if (root) {
+        root.style.backgroundColor = COLORS[Math.floor(Math.random() * COLORS.length)]
+    }
+}
 
 export function App() {
     // Refs to the elements we want to interact with programmatically
     const inputRef = useRef<HTMLInputElement>(null)
     const logRef = useRef<HTMLTextAreaElement>(null)
+
+    // Set a random color on startup
+    useEffect(() => {
+        setRandomColor()
+    }, [])
 
     // Handle the user clicking the Send button
     const handleSendClick = () => {
@@ -53,16 +66,15 @@ export function App() {
                 if (logRef.current) {
                     logRef.current.value = ""
                 }
-                const root = document.getElementById("root")
-                if (root) {
-                    // assign a new color
-                    root.style.backgroundColor = COLORS[Math.floor(Math.random() * COLORS.length)];
-                }
+                // set a new background color
+                setRandomColor()
                 break
             }
             case "string": {
                 if (logRef.current) {
                     logRef.current.value += msg.value + "\n"
+                    // scroll logRef to the bottom
+                    logRef.current.scrollTop = logRef.current.scrollHeight
                 }
                 break
             }
