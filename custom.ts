@@ -11,6 +11,7 @@ namespace SimxSample {
     let stringMessageHandler: (s: string) => void;
 
     //% block
+    //% draggableParameters="reporter"
     export function onReceiveString(handler: (s: string) => void) {
         stringMessageHandler = handler;
     }
