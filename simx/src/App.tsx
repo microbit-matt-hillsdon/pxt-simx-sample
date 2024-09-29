@@ -107,7 +107,9 @@ export function App() {
             case "messagepacket":
                 return receiveSimControlMessage(simmsg as SimulatorControlMessage)
             default:
-                // This is here to reveal how many other kinds of messages are being sent around
+                // This is here to reveal how many other kinds of messages are being sent around.
+                // Remove this line in a real project.
+                // TODO: Document the other message types. Some of them are useful.
                 console.log("Unknown simmsg", simmsg.type)
         }
     }
