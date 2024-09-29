@@ -3,7 +3,7 @@ import { SimulatorMessage, SimulatorControlMessage } from "./external/types"
 import "./App.css"
 
 // This extension's message channel. Must match simx registration in MakeCode target's `targetconfig.json`
-const MY_CHANNEL = "eanders-ms/simx-sample"
+const SIMX_CHANNEL = "eanders-ms/simx-sample"
 
 // Messages sent to/from this project's code extension. This interface is application-defined and can be anything.
 type InitExtensionMessage = {
@@ -20,7 +20,7 @@ function postSimMessage(msg: ExtensionMessage) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
     const packet: Partial<SimulatorControlMessage> = {
         type: "messagepacket",
-        channel: MY_CHANNEL,
+        channel: SIMX_CHANNEL,
         data: payload,
     }
     window.parent.postMessage(packet, "*")
@@ -32,7 +32,7 @@ const YELLOW = "#FFD43A"
 const RED = "#FF3A54"
 const COLORS = [GREEN, BLUE, YELLOW, RED]
 
-function setRandomColor() {
+function setBackgroundColor() {
     // assign a background color to the root div
     const root = document.getElementById("root")
     if (root) {
@@ -47,10 +47,10 @@ export function App() {
 
     // Set a random color on startup
     useEffect(() => {
-        setRandomColor()
+        setBackgroundColor()
     }, [])
 
-    // Handle the user clicking the Send button
+    // Handle send button click
     const handleSendClick = () => {
         if (inputRef.current) {
             const message = inputRef.current.value
@@ -59,21 +59,19 @@ export function App() {
         }
     }
 
-    // Handle a message from this simulator's code extension
+    // Handle a message from the code extension
     const receiveExtensionMessage = (msg: ExtensionMessage) => {
         switch (msg.type) {
             case "init": {
                 if (logRef.current) {
                     logRef.current.value = ""
                 }
-                // set a new background color
-                setRandomColor()
+                setBackgroundColor()
                 break
             }
             case "string": {
                 if (logRef.current) {
                     logRef.current.value += msg.value + "\n"
-                    // scroll logRef to the bottom
                     logRef.current.scrollTop = logRef.current.scrollHeight
                 }
                 break
@@ -88,16 +86,15 @@ export function App() {
         const srcFrameIndex = (simmsg.srcFrameIndex as number) ?? -1
         const fromPrimarySim = srcFrameIndex === 0
         if (!fromPrimarySim) {
-            // Ignore messages from other frames
+            // Ignore messages from non-primary frames
             return
         }
-        if (simmsg.channel !== MY_CHANNEL) {
+        if (simmsg.channel !== SIMX_CHANNEL) {
             // Ignore messages from other channels
             return
         }
         const data = new TextDecoder().decode(new Uint8Array(simmsg.data))
         const msg = JSON.parse(data) as ExtensionMessage
-
         receiveExtensionMessage(msg)
     }
 
@@ -114,7 +111,7 @@ export function App() {
         }
     }
 
-    // Handle a message from the parent window
+    // Handle messages from the parent window
     const receiveMessage = (ev: MessageEvent) => {
         const { data } = ev
         const { type } = data
