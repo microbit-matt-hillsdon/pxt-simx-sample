@@ -59,6 +59,13 @@ export function App() {
         }
     }
 
+    // Handle input Enter key press
+    const handleInputKeyDown = (ev: React.KeyboardEvent) => {
+        if (ev.key === "Enter") {
+            handleSendClick()
+        }
+    }
+
     // Handle a message from the code extension
     const receiveExtensionMessage = (msg: ExtensionMessage) => {
         switch (msg.type) {
@@ -129,7 +136,7 @@ export function App() {
         <div className="app">
             <div className="label">Send a message to your microbit:</div>
             <div className="send">
-                <input className="send" type="text" ref={inputRef} />
+                <input className="send" type="text" ref={inputRef} onKeyDown={handleInputKeyDown}/>
                 <button className="send" onClick={handleSendClick}>
                     Send
                 </button>
