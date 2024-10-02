@@ -2,10 +2,13 @@ import { useRef, useEffect } from "react"
 import { SimulatorMessage, SimulatorControlMessage } from "./external/types"
 import "./App.css"
 
-// This extension's message channel. Must match simx registration in MakeCode target's `targetconfig.json`
+// This extension's message channel. Must match the extension's simx registration key in MakeCode's `targetconfig.json`
+// Value is typically in the form of "orgname/reponame".
+// TASK: Update this to match your project's channel.
 const SIMX_CHANNEL = "eanders-ms/simx-sample"
 
 // Messages sent to/from this project's code extension. This interface is application-defined and can be anything.
+// TASK: Modify and extend these to match your project's needs. 
 type InitExtensionMessage = {
     type: "init"
 }
@@ -15,8 +18,8 @@ type StringExtensionMessage = {
 }
 type ExtensionMessage = InitExtensionMessage | StringExtensionMessage
 
-// Sends a message to this simx's code extension
-function postSimMessage(msg: ExtensionMessage) {
+// Sends a message to this project's code extension running in the MakeCode simulator
+function postExtensionMessage(msg: ExtensionMessage) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
     const packet: Partial<SimulatorControlMessage> = {
         type: "messagepacket",
@@ -26,6 +29,7 @@ function postSimMessage(msg: ExtensionMessage) {
     window.parent.postMessage(packet, "*")
 }
 
+// Colors for the background
 const GREEN = "#3AFFB3"
 const BLUE = "#3ADCFF"
 const YELLOW = "#FFD43A"
@@ -33,7 +37,7 @@ const RED = "#FF3A54"
 const COLORS = [GREEN, BLUE, YELLOW, RED]
 
 function setBackgroundColor() {
-    // assign a background color to the root div
+    // Assign a random background color to the root div
     const root = document.getElementById("root")
     if (root) {
         root.style.backgroundColor = COLORS[Math.floor(Math.random() * COLORS.length)]
@@ -41,11 +45,11 @@ function setBackgroundColor() {
 }
 
 export function App() {
-    // Refs to the elements we want to interact with programmatically
+    // Refs to the DOM elements we want to interact with programmatically
     const inputRef = useRef<HTMLInputElement>(null)
     const logRef = useRef<HTMLTextAreaElement>(null)
 
-    // Set a random color on startup
+    // Set a random background color on startup
     useEffect(() => {
         setBackgroundColor()
     }, [])
@@ -55,30 +59,34 @@ export function App() {
         if (inputRef.current) {
             const message = inputRef.current.value
             inputRef.current.value = ""
-            postSimMessage({ type: "string", value: message })
+            postExtensionMessage({ type: "string", value: message })
         }
     }
 
-    // Handle input Enter key press
+    // Handle Enter key press on input box
     const handleInputKeyDown = (ev: React.KeyboardEvent) => {
         if (ev.key === "Enter") {
             handleSendClick()
         }
     }
 
-    // Register for messages from the parent window
+    // Handle messages from the MakeCode simulator
     useEffect(() => {
-        // Handle a message from the code extension
+        // Handle a message from this project's code extension
         const receiveExtensionMessage = (msg: ExtensionMessage) => {
+            // TASK: Handle messages from your code extension here
             switch (msg.type) {
                 case "init": {
+                    // Clear the log when the extension is initialized
                     if (logRef.current) {
                         logRef.current.value = ""
                     }
+                    // Set a random background color when the extension is initialized
                     setBackgroundColor()
                     break
                 }
                 case "string": {
+                    // Append incoming message to the log
                     if (logRef.current) {
                         logRef.current.value += msg.value + "\n"
                         logRef.current.scrollTop = logRef.current.scrollHeight
@@ -92,33 +100,38 @@ export function App() {
             }
         }
 
-        // Handle a `SimulatorControlMessage` from the MakeCode simulator
+        // Handle a SimulatorControlMessage from MakeCode
         const receiveSimControlMessage = (simmsg: SimulatorControlMessage) => {
+            // Cross-frame communication is overly chatty right now, so we must filter out unwanted messages here.
+            // TODO (MakeCode): Clean up iframe messaging to reduce noise.
             const srcFrameIndex = (simmsg.srcFrameIndex as number) ?? -1
             const fromPrimarySim = srcFrameIndex === 0
             if (!fromPrimarySim) {
-                // Ignore messages from non-primary frames
+                // Ignore messages from other simulator extensions
                 return
             }
             if (simmsg.channel !== SIMX_CHANNEL) {
-                // Ignore messages from other channels
+                // Ignore messages on other channels
                 return
             }
+            // looks like a message from our code extension
             const data = new TextDecoder().decode(new Uint8Array(simmsg.data))
             const msg = JSON.parse(data) as ExtensionMessage
             receiveExtensionMessage(msg)
         }
 
-        // Handle a `SimulatorMessage` from the MakeCode simulator
+        // Handle a SimulatorMessage from MakeCode
         const receiveSimMessage = (simmsg: SimulatorMessage) => {
             switch (simmsg.type) {
                 case "messagepacket":
+                    // looks like a SimulatorControlMessage
                     return receiveSimControlMessage(simmsg as SimulatorControlMessage)
                 default:
-                    // This is here to reveal how many other kinds of messages are being sent around.
-                    // Remove this line in a real project.
-                    // TODO: Document the other message types. Some of them are useful.
-                    console.log("Unknown simmsg", simmsg.type)
+                    // This is here to reveal how many other kinds of messages are being sent.
+                    // TODO (MakeCode): Document the other message types. Some of them are useful.
+                    // TASK: Handle other message types as needed.
+                    // TASK: Comment out this line in a real project.
+                    console.log("Received unknown simmsg", simmsg.type)
             }
         }
 
@@ -127,7 +140,8 @@ export function App() {
             const { data } = ev
             const { type } = data
             if (!data || !type) return
-            receiveSimMessage(data)
+            // Looks like a SimulatorMessage from MakeCode
+            receiveSimMessage(data as SimulatorMessage)
         }
 
         window.addEventListener("message", receiveMessage)
