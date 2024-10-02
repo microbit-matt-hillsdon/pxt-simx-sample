@@ -4,11 +4,11 @@ import "./App.css"
 
 // This extension's message channel. Must match the extension's simx registration key in MakeCode's `targetconfig.json`
 // Value is typically in the form of "orgname/reponame".
-// TASK: Update this to match your project's channel.
+// 🛠️ TASK: Update this to match your project's channel.
 const SIMX_CHANNEL = "eanders-ms/simx-sample"
 
 // Messages sent to/from this project's code extension. This interface is application-defined and can be anything.
-// TASK: Modify and extend these to match your project's needs. 
+// 🛠️ TASK: Modify and extend these to match your project's needs. 
 type InitExtensionMessage = {
     type: "init"
 }
@@ -74,7 +74,7 @@ export function App() {
     useEffect(() => {
         // Handle a message from this project's code extension
         const receiveExtensionMessage = (msg: ExtensionMessage) => {
-            // TASK: Handle messages from your code extension here
+            // 🛠️ TASK: Handle messages from your code extension here
             switch (msg.type) {
                 case "init": {
                     // Clear the log when the extension is initialized
@@ -129,8 +129,8 @@ export function App() {
                 default:
                     // This is here to reveal how many other kinds of messages are being sent.
                     // TODO (MakeCode): Document the other message types. Some of them are useful.
-                    // TASK: Handle other message types as needed.
-                    // TASK: Comment out this line in a real project.
+                    // 🛠️ TASK: Handle other message types as needed.
+                    // 🛠️ TASK: Comment out this line in a real project.
                     console.log("Received unknown simmsg", simmsg.type)
             }
         }
