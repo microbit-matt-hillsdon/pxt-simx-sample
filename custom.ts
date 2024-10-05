@@ -1,11 +1,14 @@
 namespace SimxSample {
+    // 🛠️ TASK: Update this to your project's channel.
+    const SIMX_CHANNEL = "your-org/my-extension"
+
     //% block
     export function sendString(s: string) {
         const msg = {
             type: "string",
             value: s
         }
-        control.simmessages.send("eanders-ms/simx-sample", Buffer.fromUTF8(JSON.stringify(msg)), false);
+        control.simmessages.send(SIMX_CHANNEL, Buffer.fromUTF8(JSON.stringify(msg)), false);
     }
 
     let stringMessageHandler: (val: string) => void;
@@ -33,9 +36,9 @@ namespace SimxSample {
      */
     //% shim=TD_NOOP
     function registerSimx() {
-        control.simmessages.onReceived("eanders-ms/simx-sample", handleSimxMessage)
+        control.simmessages.onReceived(SIMX_CHANNEL, handleSimxMessage)
         const msg = { type: "init" };
-        control.simmessages.send("eanders-ms/simx-sample", Buffer.fromUTF8(JSON.stringify(msg)), false);
+        control.simmessages.send(SIMX_CHANNEL, Buffer.fromUTF8(JSON.stringify(msg)), false);
     }
 
     // Register simulator extension on load

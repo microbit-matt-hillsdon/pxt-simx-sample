@@ -1,5 +1,5 @@
 {
-    "name": "simx-sample",
+    "name": "my-extension",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -16,7 +16,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "7.1.3",
+        "target": "7.0.42",
         "targetId": "microbit"
     },
     "supportedTargets": [
