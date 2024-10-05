@@ -3,165 +3,22 @@
 
 ## What is a simulator extension?
 
-TBD
+Simulator extensions (_simx_ for short) are static web applications that are loaded into the MakeCode editor alongside the main simulator. When an extension containing a _simx_ is added to a MakeCode project, its _simx_ will load into a separate iframe in the MakeCode editor.
+
+Simulator extensions must be implemented as part of a standard MakeCode extension. They exist as a separate project in a subfolder, out of the way of the main extension's implementation.
 
 ## Creating a simulator extension
 
-### First create a traditional MakeCode extension
+The simplest way to make a simulator extension is to fork this repo, then edit and extend it to suit your purpose.
 
-> Simulator extensions are contained within traditional MakeCode "code" extensions. If you're not adding a simulator extension to an existing code extension, then you must first create a new code extension.
-
-Create a new project in MakeCode.
-
-Sync your project to GitHub, making note of the repo name. You will use `"<organization name>/<repo name>"` as the message channel for your simulator extension.
-
-In the JavaScript editor, add a new source file (e.g. custom.ts).
-
-In your new source file, create a function that sends a simulator message on your channel and export it as a block definition. e.g.:
-
-```ts
-namespace myext {
-    const SIMMSG_CHANNEL = "<organization name>/<repo name>";
-    //% block
-    export function loadSimulatorExtension() {
-        const msg = {
-            type: "init",
-        };
-        control.simmessages.send(SIMMSG_CHANNEL, Buffer.fromUTF8(JSON.stringify(msg)), false);
-    }
-}
-```
-
-Switch to the Blocks editor and notice a new toolbox category containing your new block.
-
-Sync your changes to GitHub.
-
-### Create the simulator extension subproject
-
-On a command line outside of MakeCode, clone your new repo.
-
-```bash
-> git clone https://github.com/<organization name>/<repo name>
-```
-
-Change directory to your cloned repo.
-
-```bash
-> cd <repo name>
-```
-
-In this folder, create a subproject for your simulator extension. The example below initializes the subproject to use [Vite](https://vitejs.dev/), [React](https://react.dev/), and [TypeScript](https://www.typescriptlang.org/). **None of these frameworks are required.** Use the famework that best suits your need.
-
-```bash
-npm create vite@latest simx -- react-ts
-cd simx
-```
-
-> The remaining steps assume your main branch is named "master", you initialized your subproject in the `/simx` folder and it has certain npm scripts defined in package.json. Your actual setup may vary. That shouldn't be a problem. Just adapt the instructions to fit your configuration.
-
-Install dependencies
-
-```bash
-npm i
-```
-
-### Test your simx locally
-
-Start the local development server:
-
-```bash
-npm run dev
-```
-
-Then load your site in a browser, e.g.: http://localhost:3000
-
-To get the most out of the following steps, first ensure your placeholder simx site is working properly on localhost.
-
-### Fine-tune simulator extension project configuration
-
-Simulator extensions will not be served from site root in production. This may require changes to the build configuration.
-
-If using Vite, add the `base` option to your `vite.config.js` file to specify relative pathing:
-
-```js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-/** @type {import('vite').UserConfig} */
-export default defineConfig({
-  plugins: [react()],
-  base: "./",
-})
-```
-
-### Create GitHub action for publish
-
-Simulator extensions must be published to GitHub pages.
-
-In the root of your repo, create the subfolder `.github/workflows` and copy this repo's `.github/workflows/build-simx.yml` file to that folder.
-
-Edit anything that looks different from the sample configuration.
-
-### Commit your changes
-
-Commit your changes and push everything to GitHub.
-
-```bash
-git add .
-git commit -m "add simulator extension"
-git push
-```
-
-### Run the `Build Simulator Extension` GitHub Action
-
-Back at github.com in your repo, click on the **Actions** tab, then **Build Simulator Extension**.
-
-On the right-hand side of the page click **Run workflow**, and run from `master`.
-
-Wait for the workflow to complete. This will create the `gh-pages` branch.
-
-### Setup GitHub Pages in your repo
-
-On your repo's main page, click on the **Settings** tab, then **Pages**.
-
-Under **Build and deployment** change the branch to `gh-pages` then click **Save**.
-
-Changing the Pages branch will kick off a publish workflow. Wait a minute for it to complete, then click **Visit site** at the top of the page. A new tab will open and you should see your placeholder simx site.
+See [./simx/README.md](./simx/README.md) for detailed instructions.
 
 
-## Testing your simulator extension in MakeCode
 
-### Host MakeCode locally
 
-To test your extension you must be hosting the MakeCode editor locally. Follow the steps [here]() to get setup for MakeCode localhost development.
 
-Once you're successfully serving the MakeCode editor locally, proceed to the next step.
 
-### Configure your extension in `targetconfig.json`
 
-> The following steps assume you have a MakeCode target workspace open in vscode. e.g. for microbit, this means you opened the file `microbit.vscode-workspace` located in your clone of the `pxt-microbit` repo.
-
-Locate the file `targetconfig.json`. It will be in the root of the target repo folder. e.g.: `pxt-microbit/targetconfig.json`
-
-Add your extension to the `approvedRepoLib` section of `targetconfig.json`. The entry key must be your `"<organization name>/<repo name>"`. _(Note there is an alternate configuration for monorepos containing multiple extensions.)_
-
-```json
-{
-    "packages": {
-        // ...
-        "approvedRepoLib": {
-            // ...
-            "eanders-ms/simx-sample": {
-                "simx": {
-                    "sha": "5695afe18fa692a9327bb06104f2813b38d11542",
-                    "devUrl": "http://localhost:5173"
-                }
-            }
-        }
-    }
-}
-```
 
 
 
