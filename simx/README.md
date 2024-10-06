@@ -6,28 +6,25 @@ The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [Rea
 
 ## Overview
 
-This guide walks you through the process of developing and testing a MakeCode extension that includes a simulator extension (_simx_). You'll learn how to set up your local development environment, fork the repository, and configure both the MakeCode and simulator extensions. The instructions cover working with GitHub for version control, developing the code portion of the extension within the MakeCode editor, and using standard development tools to build and test the simulator extension. Finally, you'll learn how to integrate and test your extension within the MakeCode environment and prepare it for publishing.
+This guide walks you through the process of developing and testing a MakeCode extension that includes a simulator extension (_simx_).
 
-## In a nutshell
+Simulator extensions are implemented as part of a standard MakeCode extension, but are organized as a separate project in a subfolder. This keeps them distinct from the main extension’s code. The development workflow is different for each.
 
 In the steps below, you will:
 
-1. **Set up for local MakeCode development**
-2. **Run the local MakeCode server**
-3. **Fork this repository and rename**
-4. **Develop the code extension in MakeCode**
-5. **Develop the simulator extension**
-6. **Register the simulator extension**
-7. **Test the extension in MakeCode**
-8. **Publish your simulator extension**
-
-
-## Developing and testing your simulator extension
+* **Set up for local MakeCode development**
+* **Run the local MakeCode server**
+* **Fork this repository and rename**
+* **Develop the code extension in MakeCode**
+* **Develop the simulator extension in vscode**
+* **Register the simulator extension**
+* **Test the extension end to end**
+* **Publish your simulator extension**
 
 > [!NOTE]
 > The following instructions assume your extension targets microbit. If you're developing for a different target (e.g. Arcade), simply replace `pxt-microbit` with the appropriate repository name (e.g. `pxt-arcade`). All other steps remain the same.
 
-### Prerequisite setup
+## Set up for local MakeCode development
 
 1. **Get setup for local MakeCode development**
 
@@ -51,17 +48,17 @@ In the steps below, you will:
 > pxt serve --just --noBrowser
 > ```
 
-### Fork and rename the `simx-sample` repository
+## Fork and rename the `simx-sample` repository
 
 To create a new simulator extension, **fork this repo** to your organization's GitHub and **rename the repo** to fit your project.
 
   ![fork and rename repo](./assets/fork-sample-repo.png)
 
-### Develop the code extension
+## Develop the code extension
 
 The code portion of your extension is developed in the MakeCode editor. You need to import your GitHub project into MakeCode to allow syncing of changes.
 
-#### Import repo to MakeCode
+### Import repo to MakeCode
 
 Import your newly cloned repo into MakeCode as a new project.
 
@@ -95,11 +92,11 @@ Import your newly cloned repo into MakeCode as a new project.
 You are now set up to develop the code portion of your extension! See [this page](https://github.com/microsoft/pxt/blob/master/docs/extensions.md) for more information on extension development.
 
 
-### Develop the simulator extension
+## Develop the simulator extension
 
 As noted earlier, the simulator extension is a web application. As such, development is done using tools and workflows that will be familiar to many developers. To get started:
 
-#### Clone your new repo
+### Clone your new repo
 
   Clone the repo to your local machine.
 
@@ -109,7 +106,7 @@ As noted earlier, the simulator extension is a web application. As such, develop
   > git clone https://github.com/your-org/my-extension
   ```
 
-#### Install _simx_ dependencies
+### Install _simx_ dependencies
 
   On the same command prompt:
 
@@ -118,17 +115,17 @@ As noted earlier, the simulator extension is a web application. As such, develop
   > npm i
   ```
 
-#### Open cloned folder in your preferred editor
+### Open cloned folder in your preferred editor
 
 These instructions will assume Visual Studio Code, but any editor will do.
 
 Even though your changes in this repo will be scoped to the `simx` folder, go ahead and open the repo root in your editor.
 
-#### Rename the webapp
+### Rename the webapp
 
 Internally, the webapp will still be named "@eanders-ms/simx-sample". Open the file `simx/package.json` and updated the name (e.g. "@your-org/my-extension"), then push your changes to GitHub.
 
-#### Run the local dev server
+### Run the local dev server
 
 On a command prompt open to the `simx` folder, start the dev server.
 
@@ -138,7 +135,7 @@ On a command prompt open to the `simx` folder, start the dev server.
 
 This will start a development server. Make note of the localhost URL and port number. For these instructions we will assume `http://localhost:5173`
 
-#### Register your extension with pxt-microbit
+## Register your extension with pxt-microbit
 
 1. Open your cloned `pxt-microbit` folder in vscode.
 
@@ -160,7 +157,7 @@ This will start a development server. Make note of the localhost URL and port nu
 5. For this configuration change to take effect, you must restart `pxt serve` and refresh your MakeCode tabs.
 
 
-### Test your extension in MakeCode
+## Test your extension in MakeCode
 
 To test your extension end to end, you will create a new MakeCode project to integrate them.
 
@@ -199,5 +196,5 @@ When you make changes to your code extension and push them to GitHub, you will n
 
 ### Refreshing the simulator extension
 
-### Publishing the simulator extension
+## Publishing the simulator extension
 
