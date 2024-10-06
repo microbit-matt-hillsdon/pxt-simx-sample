@@ -3,30 +3,18 @@
 
 ## What is a simulator extension?
 
-Simulator extensions (_simx_ for short) are static web applications that are loaded into the MakeCode editor alongside the main simulator. When an extension containing a _simx_ is added to a MakeCode project, its _simx_ will load into a separate iframe in the MakeCode editor.
+A simulator extension (referred to as _simx_) is a static web application that complements a traditional MakeCode extension. When you add an extension containing a _simx_ to your MakeCode project, the simulator extension is loaded into a separate iframe within the MakeCode editor.
 
-Simulator extensions must be implemented as part of a standard MakeCode extension. They exist as a separate project in a subfolder, out of the way of the main extension's implementation.
+Simulator extensions are implemented as part of a standard MakeCode extension, but are organized as a separate project in a subfolder. This keeps them distinct from the main extension’s code.
 
 ## Creating a simulator extension
 
-The simplest way to make a simulator extension is to fork this repo, then edit and extend it to suit your purpose.
+The easiest way to create a simulator extension is to fork this repository and then modify it to fit your needs.
 
 See [./simx/README.md](./simx/README.md) for detailed instructions.
 
 
-
-
-
-
-
-
-
-
-
-To be continued...
-
-
-
+---
 # README
 What follows is the default README common to all MakeCode extensions.
 

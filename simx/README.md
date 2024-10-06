@@ -37,7 +37,7 @@ The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [Rea
 
 
 > [!NOTE]
-> The remaining instructions assume you are using the MakeCode Editor hosted locally.
+> The remaining instructions assume you are **using the MakeCode Editor hosted locally**.
 
 ### Init your new simulator extension
 
