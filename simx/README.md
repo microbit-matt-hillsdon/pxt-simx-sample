@@ -1,9 +1,5 @@
 # `simx-sample` Simulator Extension
 
-The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org), though none of these frameworks are required. You are free to use any framework you like, as long as:
-* The app is packaged as a static web application.
-* The app is published to GitHub Pages.
-
 ## Overview
 
 This guide walks you through the process of developing and testing a MakeCode extension that includes a simulator extension (_simx_).
@@ -53,6 +49,20 @@ In the steps below, you will:
 To create a new simulator extension, **fork this repo** to your organization's GitHub and **rename the repo** to fit your project.
 
   ![fork and rename repo](./assets/fork-sample-repo.png)
+
+### Configure GitHub Pages
+
+Released simulator extensions are hosted on GitHub Pages, so we'll set that up now.
+
+1. Run the **Build Simulator Extension** GitHub Action. This will build and publish your _simx_ to a branch named `gh-pages`.
+
+  ![build simx action](./assets/build-simx-action.png)
+
+  Wait for the build to complete.
+
+2. From your repo main page, click **Settings**, then **Pages** (under _Code and automation_). Beneath **Build and deployment**, in the **Branch** dropdown, choose the `gh-pages` branch.
+
+  ![deploy from the gh-pages branch](./assets/gh-pages-branch-deploy.png)
 
 ## Develop the code extension
 
@@ -156,6 +166,11 @@ This will start a development server. Make note of the localhost URL and port nu
 
 5. For this configuration change to take effect, you must restart `pxt serve` and refresh your MakeCode tabs.
 
+### Edit your _simx_ webapp
+
+The simulator extension is located in the `/simx` folder. During _simx_ development, you'll generally make changes only to the files within this folder.
+
+The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org). None of these frameworks are required. You are free to use any framework you like, as long as the app is packaged as a static web application.
 
 ## Test your extension in MakeCode
 
@@ -196,5 +211,48 @@ When you make changes to your code extension and push them to GitHub, you will n
 
 ### Refreshing the simulator extension
 
-## Publishing the simulator extension
+TODO fill in
 
+## Publishing your simulator extension
+
+To test your _simx_ hosted online, you must publish it to GitHub Pages.
+
+1. Commit and push your changes to GitHub.
+
+2. Run the **Build Simulator Extension** GitHub Action. This will publish your _simx_ to the `gh-pages` branch.
+
+### Test your published _simx_
+
+3. Your published _simx_ is now publicly accessible at https://your-org.github.io/my-extension. Back in `targetconfig.json`, update your `"devUrl"` to this value.
+
+4. Restart `pxt serve` to pick up this config change.
+
+5. In your MakeCode test project, refresh the page. Verify in devtools that your _simx_ is loading from github.io.
+
+
+## Releasing your simulator extension
+
+When you're ready to release your simulator extension:
+
+1. At your repo on GitHub, go to your `gh-pages` branch, click **Commit History** and copy the full Commit SHA of your latest version.
+
+    ![select gh-pages branch](./assets/select-ghpages-branch.png)
+
+    ![commit history](./assets/commit-history.png)
+
+    ![copy commit sha](./assets/copy-commit-sha.png)
+
+2. Go back to `targetconfig.json` to where you registered your extension with `pxt-microbit` and fill in the `"sha"` with the value copied from GitHub. Your updated _simx_ registration will look something like this:
+
+    ```json
+    "your-org/my-extension": {
+      "simx": {
+        "sha": "6555401f995fac26ebafbaf1f1b1261ae72a05b3",
+        "devUrl": "http://localhost:5173"
+      }
+    }
+    ```
+
+3. Open a pull request from your fork of `pxt-microbit` to `microsoft/pxt-microbit`.
+
+The MakeCode team will review your extension and communicate a release timeline.
