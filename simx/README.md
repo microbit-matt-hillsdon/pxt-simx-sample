@@ -15,8 +15,8 @@ The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [Rea
 
     Follow the instructions [here](https://github.com/microsoft/pxt-microbit#local-server-setup) to get setup for local MakeCode development, **with one modification**: Because you will be creating a pull request for your extension registration, **you must fork the target repo** rather than simply cloning it.
 
-    > [!IMPORTANT]
-    > Where the linked instructions say to clone the `pxt-microbit` repo, you will _clone your fork_ of the `pxt-microbit` repo.
+> [!IMPORTANT]
+> Where the linked instructions say to clone the `pxt-microbit` repo, you will _clone your fork_ of the `pxt-microbit` repo.
 
 2. **Run local MakeCode server**
 
@@ -26,14 +26,14 @@ The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [Rea
 
     You should see MakeCode open in a browser, served from `http://localhost:3232`.
 
-    > [!TIP]
-    > You may have to restart `pxt serve` occasionally. After you've successfully run it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the `--just` argument:
-    ```bash
-    > pxt serve --just
-    ```
-
-    > [!TIP]
-    > If you don't want `pxt serve` to pop a new browser tab every time you start it, add the `--noBrowser` argument.
+> [!TIP]
+> You may have to restart `pxt serve` occasionally. After you've successfully run it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the __--just__ argument.
+>
+> If you don't want `pxt serve` to open a new browser tab every time you start it, add the __--noBrowser__ argument.
+>
+> ```bash
+> pxt serve --just --noBrowser`
+> ```
 
 
 > [!NOTE]
@@ -174,8 +174,8 @@ To test your extension end to end, you will create a new MakeCode project to int
 
 4. Next, we must instruct MakeCode to load your simulator from the local dev server. Do this by adding the url parameter `simxdev`.
 
-    > ![NOTE]
-    > This parameter only works run hosting MakeCode locally.
+> [!NOTE]
+> This parameter only works run hosting MakeCode locally.
 
 5. Once the page reloads, you should see your simulator extension load below the main simulator!
 
@@ -186,8 +186,8 @@ When you make changes to your code extension and push them to GitHub, you will n
 
   ![refresh extension](./assets/refresh-ext.png)
 
-  > [!NOTE]
-  > The File Explorer is not accessible from the Blocks editor. Switch to JavaScript to find it.
+> [!NOTE]
+> The File Explorer is not accessible from the Blocks editor. Switch to JavaScript to find it.
 
 #### Refreshing the simulator extension
 
