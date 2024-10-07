@@ -14,7 +14,7 @@ In the steps below, you will:
 * **Register the simulator extension**
 * **Test the extension end to end**
 * **Publish your simulator extension**
-* **Release your simulator extension**
+* **Submit your simulator extension for release**
 
 > [!NOTE]
 > The following instructions assume your extension targets microbit. If you're developing for a different target (e.g. Arcade), simply replace `pxt-microbit` with the appropriate repository name (e.g. `pxt-arcade`). All other steps remain the same.
@@ -168,6 +168,12 @@ This will start a development server. Make note of the localhost URL and port nu
 The simulator extension is located in the `/simx` folder. During _simx_ development, you'll generally make changes only to the files within this folder.
 
 The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org). None of these frameworks are required. You are free to use any framework you like, as long as the app is packaged as a static web application.
+
+#### Update the Message Channel in _simx_
+
+In `/simx/src/App.tsx`, update `SIMX_CHANNEL` to match the value in the code extension.
+
+While you're there, review comments marked with `🛠️ TASK`. These indicate areas you'll likely need to modify for your implementation.
 
 ### Test your extension in MakeCode
 
