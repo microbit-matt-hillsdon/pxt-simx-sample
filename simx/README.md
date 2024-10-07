@@ -263,7 +263,7 @@ When ready to release your extension:
     "your-org/my-extension": {
       "simx": {
         "sha": "6555401f995fac26ebafbaf1f1b1261ae72a05b3",
-        "devUrl": "https://your-org.github.io/my-extension"
+        "devUrl": "http://localhost:5173"
       }
     }
     ```
