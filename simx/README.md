@@ -1,7 +1,5 @@
 # `simx-sample` Simulator Extension
 
-## Overview
-
 This guide walks you through the process of developing and testing a MakeCode extension that includes a simulator extension (_simx_).
 
 Simulator extensions are implemented as part of a standard MakeCode extension, but are organized as a separate project in a subfolder. This keeps them distinct from the main extension’s code. The development workflow is different for each.
@@ -16,11 +14,12 @@ In the steps below, you will:
 * **Register the simulator extension**
 * **Test the extension end to end**
 * **Publish your simulator extension**
+* **Release your simulator extension**
 
 > [!NOTE]
 > The following instructions assume your extension targets microbit. If you're developing for a different target (e.g. Arcade), simply replace `pxt-microbit` with the appropriate repository name (e.g. `pxt-arcade`). All other steps remain the same.
 
-## Set up for local MakeCode development
+### Set up for local MakeCode development
 
 1. **Get setup for local MakeCode development**
 
@@ -31,26 +30,24 @@ In the steps below, you will:
 
 2. **Run local MakeCode server**
 
-    Ensure you can successfully host the MakeCode editor locally.
-
     Ensure that you can successfully host the MakeCode editor locally by following the [instructions here](https://github.com/microsoft/pxt-microbit#running). You should see MakeCode load in a browser, served from `http://localhost:3232`.
 
 > [!TIP]
 > You may have to restart `pxt serve` occasionally. After running it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the __--just__ argument.
 >
-> If you don't want `pxt serve` to open a new browser tab every time you start it, add the __--noBrowser__ argument.
+> Also, if you don't want `pxt serve` to open a new browser tab every time you start it, add the __--noBrowser__ argument.
 >
 > ```bash
 > pxt serve --just --noBrowser
 > ```
 
-## Fork and rename the `simx-sample` repository
+### Fork and rename the `simx-sample` repository
 
 To create a new simulator extension, **fork this repo** to your organization's GitHub and **rename the repo** to fit your project.
 
   ![fork and rename repo](./assets/fork-sample-repo.png)
 
-### Configure GitHub Pages
+#### Configure GitHub Pages
 
 Released simulator extensions are hosted on GitHub Pages, so we'll set that up now.
 
@@ -64,11 +61,11 @@ Released simulator extensions are hosted on GitHub Pages, so we'll set that up n
 
   ![deploy from the gh-pages branch](./assets/gh-pages-branch-deploy.png)
 
-## Develop the code extension
+### Develop the code extension
 
 The code portion of your extension is developed in the MakeCode editor. You need to import your GitHub project into MakeCode to allow syncing of changes.
 
-### Import repo to MakeCode
+#### Import repo to MakeCode
 
 Import your newly cloned repo into MakeCode as a new project.
 
@@ -102,11 +99,11 @@ Import your newly cloned repo into MakeCode as a new project.
 You are now set up to develop the code portion of your extension! See [this page](https://github.com/microsoft/pxt/blob/master/docs/extensions.md) for more information on extension development.
 
 
-## Develop the simulator extension
+### Develop the simulator extension
 
 As noted earlier, the simulator extension is a web application. As such, development is done using tools and workflows that will be familiar to many developers. To get started:
 
-### Clone your new repo
+#### Clone your new repo
 
   Clone the repo to your local machine.
 
@@ -116,7 +113,7 @@ As noted earlier, the simulator extension is a web application. As such, develop
   > git clone https://github.com/your-org/my-extension
   ```
 
-### Install _simx_ dependencies
+#### Install _simx_ dependencies
 
   On the same command prompt:
 
@@ -125,17 +122,17 @@ As noted earlier, the simulator extension is a web application. As such, develop
   > npm i
   ```
 
-### Open cloned folder in your preferred editor
+#### Open cloned folder in your preferred editor
 
 These instructions will assume Visual Studio Code, but any editor will do.
 
 Even though your changes in this repo will be scoped to the `simx` folder, go ahead and open the repo root in your editor.
 
-### Rename the webapp
+#### Rename the webapp
 
 Internally, the webapp will still be named "@eanders-ms/simx-sample". Open the file `simx/package.json` and updated the name (e.g. "@your-org/my-extension"), then push your changes to GitHub.
 
-### Run the local dev server
+#### Run the local dev server
 
 On a command prompt open to the `simx` folder, start the dev server.
 
@@ -145,7 +142,7 @@ On a command prompt open to the `simx` folder, start the dev server.
 
 This will start a development server. Make note of the localhost URL and port number. For these instructions we will assume `http://localhost:5173`
 
-## Register your extension with pxt-microbit
+### Register your extension with pxt-microbit
 
 1. Open your cloned `pxt-microbit` folder in vscode.
 
@@ -166,13 +163,13 @@ This will start a development server. Make note of the localhost URL and port nu
 
 5. For this configuration change to take effect, you must restart `pxt serve` and refresh your MakeCode tabs.
 
-### Edit your _simx_ webapp
+#### Edit your _simx_ webapp
 
 The simulator extension is located in the `/simx` folder. During _simx_ development, you'll generally make changes only to the files within this folder.
 
 The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org). None of these frameworks are required. You are free to use any framework you like, as long as the app is packaged as a static web application.
 
-## Test your extension in MakeCode
+### Test your extension in MakeCode
 
 To test your extension end to end, you will create a new MakeCode project to integrate them.
 
@@ -200,7 +197,7 @@ To test your extension end to end, you will create a new MakeCode project to int
 4. Once the page reloads, you should see your simulator extension load below the main simulator!
 
 
-### Refreshing the code extension
+#### Refreshing the code extension
 
 When you make changes to your code extension and push them to GitHub, you will need to pull those changes into your test project. This is done by refreshing the dependency in the File Explorer:
 
@@ -209,11 +206,11 @@ When you make changes to your code extension and push them to GitHub, you will n
 > [!NOTE]
 > The File Explorer is not accessible from the Blocks editor. Switch to JavaScript to find it.
 
-### Refreshing the simulator extension
+#### Refreshing the simulator extension
 
 When serving your _simx_ from the local dev server, your changes should reload automatically. No need to push anything to GitHub.
 
-## Publishing your simulator extension
+### Publishing your simulator extension
 
 To test your _simx_ online or to release it, you must publish it to GitHub Pages.
 
@@ -221,7 +218,7 @@ To test your _simx_ online or to release it, you must publish it to GitHub Pages
 
 2. Run the **Build Simulator Extension** GitHub Action, which will publish your _simx_ to the `gh-pages` branch.
 
-### Test your published _simx_
+#### Test your published _simx_
 
 3. Your published _simx_ is now publicly accessible at https://your-org.github.io/my-extension. Update `devUrl` in `targetconfig.json` to this value. Your updated registration will look something like:
 
@@ -239,7 +236,7 @@ To test your _simx_ online or to release it, you must publish it to GitHub Pages
 5. In your MakeCode test project, refresh the page. Verify in devtools that your _simx_ is loading from github.io.
 
 
-## Releasing your simulator extension
+### Releasing your simulator extension
 
 When ready to release your extension:
 
