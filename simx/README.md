@@ -139,7 +139,7 @@ On a command prompt open to the `simx` folder, start the dev server.
 
 This will start a development server. Make note of the localhost URL and port number. For these instructions we will assume `http://localhost:5173`
 
-### Register your extension with pxt-microbit
+### Register your extension with the pxt-microbit target
 
 1. Open your cloned `pxt-microbit` folder in VSCode.
 
@@ -244,6 +244,8 @@ To test your _simx_ online or to release it, you must publish it to GitHub Pages
 
 
 ### Releasing your simulator extension
+
+Simulator extension releases are pinned to GitHub commit SHA.
 
 When ready to release your extension:
 
