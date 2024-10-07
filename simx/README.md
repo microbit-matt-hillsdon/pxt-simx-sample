@@ -135,7 +135,7 @@ On a command prompt open to the `simx` folder, start the dev server.
 npm run dev
 ```
 
-This will start a development server. Make note of the localhost URL and port number. For these instructions we will assume `http://localhost:5173`
+This command will begin hosting your _simx_ locally. Make note of the localhost URL and port number, as you'll need them to configure MakeCode to load the simulator from that address. For the purposes of this guide, we will assume the URL is `http://localhost:5173`.
 
 ### Register your extension with the pxt-microbit target
 
