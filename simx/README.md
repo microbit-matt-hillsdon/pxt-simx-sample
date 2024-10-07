@@ -105,7 +105,7 @@ As noted earlier, the simulator extension is a web application. As such, develop
   On a command prompt:
 
   ```bash
-  > git clone https://github.com/your-org/my-extension
+  git clone https://github.com/your-org/my-extension
   ```
 
 #### Install _simx_ dependencies
@@ -113,8 +113,8 @@ As noted earlier, the simulator extension is a web application. As such, develop
   On the same command prompt:
 
   ```bash
-  > cd my-extension/simx
-  > npm i
+  cd my-extension/simx
+  npm i
   ```
 
 #### Open cloned folder in your preferred editor
@@ -132,7 +132,7 @@ Internally, the webapp will still be named "@your-org/my-extension". Open the fi
 On a command prompt open to the `simx` folder, start the dev server.
 
 ```bash
-> npm run dev
+npm run dev
 ```
 
 This will start a development server. Make note of the localhost URL and port number. For these instructions we will assume `http://localhost:5173`
