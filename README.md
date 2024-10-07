@@ -14,6 +14,9 @@ The easiest way to create a simulator extension is to fork this repository and t
 
 See [./simx/README.md](./simx/README.md) for detailed instructions.
 
+> [!IMPORTANT]
+> Simulator extensions are only supported for [Approved Extensions](https://github.com/microsoft/pxt/blob/master/docs/extensions/approval.md), and they must go through an additional approval process. The MakeCode team reserves the right to approve or decline simulator extensions at their discretion. We strongly recommend consulting with the MakeCode team before investing time and resources into creating a simulator extension.
+
 ## License
 
 MIT
