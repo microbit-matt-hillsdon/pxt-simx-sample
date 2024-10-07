@@ -1,8 +1,6 @@
 # MakeCode Simulator Extension Sample Project
 
-This guide walks you through the process of developing and testing a MakeCode extension that includes a simulator extension (_simx_).
-
-Simulator extensions are implemented as part of a standard MakeCode extension, but are organized as a separate project in a subfolder. This keeps them distinct from the main extension’s code. The development workflow is different for each.
+This guide walks you through the process of developing a MakeCode simulator extension, from initial project creation to final release.
 
 In the steps below, you will:
 
