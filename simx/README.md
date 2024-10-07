@@ -211,19 +211,28 @@ When you make changes to your code extension and push them to GitHub, you will n
 
 ### Refreshing the simulator extension
 
-TODO fill in
+When serving your _simx_ from the local dev server, your changes should reload automatically. No need to push anything to GitHub.
 
 ## Publishing your simulator extension
 
-To test your _simx_ hosted online, you must publish it to GitHub Pages.
+To test your _simx_ online or to release it, you must publish it to GitHub Pages.
 
 1. Commit and push your changes to GitHub.
 
-2. Run the **Build Simulator Extension** GitHub Action. This will publish your _simx_ to the `gh-pages` branch.
+2. Run the **Build Simulator Extension** GitHub Action, which will publish your _simx_ to the `gh-pages` branch.
 
 ### Test your published _simx_
 
-3. Your published _simx_ is now publicly accessible at https://your-org.github.io/my-extension. Back in `targetconfig.json`, update your `"devUrl"` to this value.
+3. Your published _simx_ is now publicly accessible at https://your-org.github.io/my-extension. Update `devUrl` in `targetconfig.json` to this value. Your updated registration will look something like:
+
+    ```json
+    "your-org/my-extension": {
+      "simx": {
+        "sha": "",
+        "devUrl": "https://your-org.github.io/my-extension"
+      }
+    }
+    ```
 
 4. Restart `pxt serve` to pick up this config change.
 
@@ -232,9 +241,9 @@ To test your _simx_ hosted online, you must publish it to GitHub Pages.
 
 ## Releasing your simulator extension
 
-When you're ready to release your simulator extension:
+When ready to release your extension:
 
-1. At your repo on GitHub, go to your `gh-pages` branch, click **Commit History** and copy the full Commit SHA of your latest version.
+1. Go to the `gh-pages` branch on GitHub and copy the full commit SHA of the latest version.
 
     ![select gh-pages branch](./assets/select-ghpages-branch.png)
 
@@ -242,13 +251,13 @@ When you're ready to release your simulator extension:
 
     ![copy commit sha](./assets/copy-commit-sha.png)
 
-2. Go back to `targetconfig.json` to where you registered your extension with `pxt-microbit` and fill in the `"sha"` with the value copied from GitHub. Your updated _simx_ registration will look something like this:
+2. Update the `sha` field of your extension registration in `targetconfig.json` with this value, so your updated registration looks something like this:
 
     ```json
     "your-org/my-extension": {
       "simx": {
         "sha": "6555401f995fac26ebafbaf1f1b1261ae72a05b3",
-        "devUrl": "http://localhost:5173"
+        "devUrl": "https://your-org.github.io/my-extension"
       }
     }
     ```
