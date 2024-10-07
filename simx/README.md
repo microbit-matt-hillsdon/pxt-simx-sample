@@ -7,12 +7,11 @@ Simulator extensions are implemented as part of a standard MakeCode extension, b
 In the steps below, you will:
 
 * **Set up for local MakeCode development**
-* **Run the local MakeCode server**
 * **Fork this repository and rename**
-* **Develop the code extension in MakeCode**
-* **Develop the simulator extension in vscode**
-* **Register the simulator extension**
-* **Test the extension end to end**
+* **Develop your code extension in MakeCode**
+* **Develop your simulator extension in VSCode**
+* **Register your simulator extension**
+* **Test your extension end to end**
 * **Publish your simulator extension**
 * **Submit your simulator extension for release**
 
@@ -21,19 +20,17 @@ In the steps below, you will:
 
 ### Set up for local MakeCode development
 
-1. **Get setup for local MakeCode development**
-
-    Follow the instructions [here](https://github.com/microsoft/pxt-microbit#local-server-setup) to get setup for local MakeCode development, **with one important modification**: Because you will be creating a pull request for your extension registration, **fork the target repo** rather than simply cloning it.
+  Follow the instructions [here](https://github.com/microsoft/pxt-microbit#local-server-setup) to get setup for local MakeCode development, **with one important modification**: Because you will be creating a pull request for your extension registration, **fork the target repo** rather than simply cloning it.
 
 > [!IMPORTANT]
 > Where the linked instructions say to clone the `pxt-microbit` repo, you will _clone your fork_ of the `pxt-microbit` repo.
 
-2. **Run local MakeCode server**
+#### Run local MakeCode server
 
-    Ensure that you can successfully host the MakeCode editor locally by following the [instructions here](https://github.com/microsoft/pxt-microbit#running). You should see MakeCode load in a browser, served from `http://localhost:3232`.
+  Ensure you can successfully host the MakeCode editor on localhost by following the [instructions here](https://github.com/microsoft/pxt-microbit#running). You should see MakeCode load in a browser, served from `http://localhost:3232`.
 
 > [!TIP]
-> You may have to restart `pxt serve` occasionally. After running it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the __--just__ argument.
+> You may have to restart the MakeCode local server occasionally. After running it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the __--just__ argument.
 >
 > Also, if you don't want `pxt serve` to open a new browser tab every time you start it, add the __--noBrowser__ argument.
 >
