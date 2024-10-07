@@ -30,9 +30,9 @@ In the steps below, you will:
   Ensure you can successfully host the MakeCode editor on localhost by following the [instructions here](https://github.com/microsoft/pxt-microbit#running). You should see MakeCode load in a browser, served from `http://localhost:3232`.
 
 > [!TIP]
-> You may have to restart the MakeCode local server occasionally. After running it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the __--just__ argument.
+> You may have to restart the MakeCode local server occasionally. After running it once, the essential packages will have been built. To skip rebuilding them on subsequent runs, add the `--just` argument.
 >
-> Also, if you don't want `pxt serve` to open a new browser tab every time you start it, add the __--noBrowser__ argument.
+> Also, if you don't want `pxt serve` to open a new browser tab every time you start it, add the `--noBrowser` argument.
 >
 > ```bash
 > pxt serve --just --noBrowser
@@ -40,13 +40,13 @@ In the steps below, you will:
 
 ### Fork and rename the `simx-sample` repository
 
-To create a new simulator extension, **fork this repo** to your organization's GitHub and **rename the repo** to fit your project.
+To create a new simulator extension, **fork this repo** to your organization's GitHub and **rename it** to fit your project.
 
   ![fork and rename repo](./assets/fork-sample-repo.png)
 
 #### Configure GitHub Pages
 
-Released simulator extensions are hosted on GitHub Pages, so we'll set that up now.
+Simulator extensions are hosted on GitHub Pages, so we'll set that up now.
 
 1. Run the **Build Simulator Extension** GitHub Action. This will build and publish your _simx_ to a branch named `gh-pages`.
 
@@ -127,7 +127,7 @@ Even though your changes in this repo will be scoped to the `simx` folder, go ah
 
 #### Rename the webapp
 
-Internally, the webapp will still be named "@eanders-ms/simx-sample". Open the file `simx/package.json` and updated the name (e.g. "@your-org/my-extension"), then push your changes to GitHub.
+Internally, the webapp will still be named "@eanders-ms/simx-sample". Open the file `simx/package.json` and update the name (e.g. "@your-org/my-extension"), then push your changes to GitHub.
 
 #### Run the local dev server
 
@@ -141,7 +141,7 @@ This will start a development server. Make note of the localhost URL and port nu
 
 ### Register your extension with pxt-microbit
 
-1. Open your cloned `pxt-microbit` folder in vscode.
+1. Open your cloned `pxt-microbit` folder in VSCode.
 
 2. Open the file `targetconfig.json`.
 
@@ -176,7 +176,7 @@ While you're there, review comments marked with `🛠️ TASK`. These indicate a
 
 To test your extension end to end, you will create a new MakeCode project to integrate your code and simulator extensions.
 
-1. In your browser, make a new tab, open your locally running MakeCode editor there (e.g. `http://localhost:3232`), and create a new project.
+1. Open the locally hosted MakeCode editor in second browser tab (`http://localhost:3232`), and create a new project.
 
 2. Add your extension to the project from GitHub URL:
 
