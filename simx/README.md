@@ -20,7 +20,7 @@ In the steps below, you will:
 
 ### Set up for local MakeCode development
 
-  Follow the instructions [here](https://github.com/microsoft/pxt-microbit#local-server-setup) to get setup for local MakeCode development, **with one important modification**: Because you will be creating a pull request for your extension registration, **fork the target repo** rather than simply cloning it.
+  Follow the instructions [here](https://github.com/microsoft/pxt-microbit#local-server-setup) to get setup for local MakeCode development, **with one important modification**: Because you will be creating a pull request to release or update your extension, **fork the target repo** rather than simply cloning it.
 
 > [!IMPORTANT]
 > Where the linked instructions say to clone the `pxt-microbit` repo, you will _clone your fork_ of the `pxt-microbit` repo.
