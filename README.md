@@ -1,5 +1,4 @@
-
-# Simulator Extension Sample
+# MakeCode Simulator Extension Sample Project
 
 ## What is a simulator extension?
 

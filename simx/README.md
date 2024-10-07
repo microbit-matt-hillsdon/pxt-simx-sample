@@ -1,4 +1,4 @@
-# `simx-sample` Simulator Extension
+# MakeCode Simulator Extension Sample Project
 
 This guide walks you through the process of developing and testing a MakeCode extension that includes a simulator extension (_simx_).
 
@@ -38,7 +38,7 @@ In the steps below, you will:
 > pxt serve --just --noBrowser
 > ```
 
-### Fork and rename the `simx-sample` repository
+### Fork and rename the `pxt-simx-sample` repository (this repo)
 
 To create a new simulator extension, **fork this repo** to your organization's GitHub and **rename it** to fit your project.
 
@@ -74,7 +74,7 @@ Import your newly cloned repo into MakeCode as a new project.
 
   ![import github repo](./assets/import-github-url.png)
 
-3. Once the project opens, it will still be named 'simx-sample'. Go ahead and **rename your project**.
+3. Once the project opens, it will be named 'my-extension'. Go ahead and **rename your project**.
 
   ![rename and push](./assets/rename-and-push.png)
 
@@ -127,7 +127,7 @@ Even though your changes in this repo will be scoped to the `simx` folder, go ah
 
 #### Rename the webapp
 
-Internally, the webapp will still be named "@eanders-ms/simx-sample". Open the file `simx/package.json` and update the name (e.g. "@your-org/my-extension"), then push your changes to GitHub.
+Internally, the webapp will still be named "@your-org/my-extension". Open the file `simx/package.json` and update the name, then push your changes to GitHub.
 
 #### Run the local dev server
 
@@ -162,9 +162,9 @@ This will start a development server. Make note of the localhost URL and port nu
 
 #### Edit your _simx_ webapp
 
-The simulator extension is located in the `/simx` folder. During _simx_ development, you'll generally make changes only to the files within this folder.
+The simulator extension webapp project is located in the `/simx` folder. During _simx_ development, you'll generally limit changes to files within this folder.
 
-The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org). None of these frameworks are required. You are free to use any framework you like, as long as the app is packaged as a static web application.
+The `pxt-simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org). None of these frameworks are required. Use any framework you like, as long as the app is packaged as a static web application.
 
 #### Update the Message Channel in _simx_
 
