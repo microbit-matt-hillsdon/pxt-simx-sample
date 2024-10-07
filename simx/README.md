@@ -164,7 +164,7 @@ The simulator extension webapp project is located in the `/simx` folder. During 
 
 The `pxt-simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://typescriptlang.org). None of these frameworks are required. Use any framework you like, as long as the app is packaged as a static web application.
 
-#### Update the Message Channel in _simx_
+#### Update the Message Channel
 
 In `/simx/src/App.tsx`, update `SIMX_CHANNEL` to match the value you set in the code extension.
 
