@@ -52,7 +52,7 @@ Simulator extensions are hosted on GitHub Pages, so we'll set that up now.
 
   Wait for the build to complete.
 
-2. From your repo main page, click **Settings**, then **Pages** (under _Code and automation_). Beneath **Build and deployment**, in the **Branch** dropdown, choose the `gh-pages` branch.
+2. From your repo main page, click **Settings**, then **Pages** (under _Code and automation_). Beneath **Build and deployment**, in the **Branch** dropdown, choose the `gh-pages` branch, then click **Save**.
 
   ![deploy from the gh-pages branch](./assets/gh-pages-branch-deploy.png)
 
