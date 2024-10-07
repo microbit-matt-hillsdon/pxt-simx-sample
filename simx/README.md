@@ -171,13 +171,13 @@ The `simx-sample/simx` webapp was created with [Vite](https://vitejs.dev) + [Rea
 
 #### Update the Message Channel in _simx_
 
-In `/simx/src/App.tsx`, update `SIMX_CHANNEL` to match the value in the code extension.
+In `/simx/src/App.tsx`, update `SIMX_CHANNEL` to match the value you set in the code extension.
 
 While you're there, review comments marked with `🛠️ TASK`. These indicate areas you'll likely need to modify for your implementation.
 
 ### Test your extension in MakeCode
 
-To test your extension end to end, you will create a new MakeCode project to integrate them.
+To test your extension end to end, you will create a new MakeCode project to integrate your code and simulator extensions.
 
 1. In your browser, make a new tab, open your locally running MakeCode editor there (e.g. `http://localhost:3232`), and create a new project.
 
@@ -195,7 +195,11 @@ To test your extension end to end, you will create a new MakeCode project to int
 
     ![extension load card](./assets/ext-load-card.png)
 
-3. Instruct MakeCode to load your simulator extension from the local dev server by adding the `simxdev` URL parameter.
+3. Instruct MakeCode to load your simulator extension from the local dev server by adding the `simxdev` URL parameter, e.g.:
+    
+    ```
+    http://localhost:3232/index.html?simexdev#editor
+    ```
 
 > [!NOTE]
 > This parameter only works run hosting MakeCode locally.
