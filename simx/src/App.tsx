@@ -5,7 +5,7 @@ import "./App.css"
 // This extension's message channel. Must match the extension's simx registration key in MakeCode's `targetconfig.json`
 // Value is typically in the form of "orgname/reponame".
 // 🛠️ TASK: Update this to your project's channel.
-const SIMX_CHANNEL = "your-org/my-extension"
+const SIMX_CHANNEL = "microsoft/pxt-simx-sample"
 
 // Messages sent to/from this project's code extension. This interface is application-defined and can be anything.
 // 🛠️ TASK: Modify and extend these as needed for your project's scenario. 
