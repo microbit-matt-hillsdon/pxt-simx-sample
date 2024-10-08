@@ -72,7 +72,7 @@ Import your newly cloned repo into MakeCode as a new project.
 
   ![import github repo](./assets/import-github-url.png)
 
-3. Once the project opens, it will be named 'my-extension'. Go ahead and **rename your project**.
+3. Once the project opens, it will be named 'pxt-simx-sample'. Go ahead and **rename your project**.
 
   ![rename and push](./assets/rename-and-push.png)
 

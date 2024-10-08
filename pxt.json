@@ -1,5 +1,5 @@
 {
-    "name": "my-extension",
+    "name": "pxt-simx-sample",
     "description": "",
     "dependencies": {
         "core": "*",
